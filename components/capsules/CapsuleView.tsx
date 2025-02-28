@@ -206,11 +206,11 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
     }
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="bg-black rounded-lg shadow-lg p-16 border mb-128">
             <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-800 mb-2">{capsule.name}</h1>
-                    <p className="text-gray-700 text-lg">{capsule.description}</p>
+                    <h1 className="text-3xl font-bold mb-2">{capsule.name}</h1>
+                    <p className="text-gray-500 text-md">{capsule.description}</p>
                 </div>
                 <div className="flex flex-col md:items-end gap-3">
                     <div className={`px-4 py-2 rounded-full text-base font-medium ${isUnlocked() ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
@@ -244,38 +244,38 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 bg-gray-50 p-6 rounded-lg">
-                <div className="bg-white p-4 rounded-md shadow-sm">
-                    <p className="text-gray-600 font-medium mb-1">Created by</p>
-                    <p className="text-gray-900 font-semibold text-lg">{capsule.ownerName || 'Unknown'}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 bg-gray-800 p-6 rounded-lg">
+                <div className="bg-gray-800 p-4 rounded-md shadow-sm hover:bg-gray-700 transition-colors cursor-pointer duration-300 ease">
+                    <p className="font-medium mb-1">Created by</p>
+                    <p className="text-gray-500 font-semibold text-lg">{capsule.ownerName || 'Unknown'}</p>
                 </div>
-                <div className="bg-white p-4 rounded-md shadow-sm">
-                    <p className="text-gray-600 font-medium mb-1">Created on</p>
-                    <p className="text-gray-900 font-semibold text-lg">{formatDate(capsule.createdAt)}</p>
+                <div className="bg-gray-800 p-4 rounded-md shadow-sm hover:bg-gray-700 transition-colors cursor-pointer duration-300 ease">
+                    <p className="font-medium mb-1">Created on</p>
+                    <p className="text-gray-500 font-semibold text-lg">{formatDate(capsule.createdAt)}</p>
                 </div>
-                <div className="bg-white p-4 rounded-md shadow-sm">
-                    <p className="text-gray-600 font-medium mb-1">Unlocks on</p>
-                    <p className="text-gray-900 font-semibold text-lg">{formatDate(capsule.unlockDate)}</p>
+                <div className="bg-gray-800 p-4 rounded-md shadow-sm hover:bg-gray-700 transition-colors cursor-pointer duration-300 ease">
+                    <p className="font-medium mb-1">Unlocks on</p>
+                    <p className="text-gray-500 font-semibold text-lg">{formatDate(capsule.unlockDate)}</p>
                 </div>
-                <div className="bg-white p-4 rounded-md shadow-sm">
-                    <p className="text-gray-600 font-medium mb-1">Number of items</p>
-                    <p className="text-gray-900 font-semibold text-lg">{capsule.files?.length || 0} files</p>
+                <div className="bg-gray-800 p-4 rounded-md shadow-sm hover:bg-gray-700 transition-colors cursor-pointer duration-300 ease">
+                    <p className="font-medium mb-1">Number of items</p>
+                    <p className="text-gray-500 font-semibold text-lg">{capsule.files?.length || 0} files</p>
                 </div>
             </div>
 
             {!isUnlocked() && (
                 <div className="mb-8">
-                    <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+                    <div className="border border-gray-200 rounded-lg p-6 bg-gray-800 hover:bg-gray-700 transition-colors duration-300 ease">
                         <div className="flex items-center gap-3 mb-4">
                             <svg className="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                             </svg>
-                            <h3 className="text-xl font-bold text-gray-800">This Capsule is Locked</h3>
+                            <h3 className="text-xl font-bold">This Capsule is Locked</h3>
                         </div>
-                        <p className="text-gray-700 text-base mb-2">
+                        <p className="text-gray-500 text-base mb-2">
                             This time capsule is currently locked and will become available on {formatDate(capsule.unlockDate)}.
                         </p>
-                        <p className="text-gray-700 text-base">
+                        <p className="text-gray-500 text-base">
                             You'll be able to view its contents, download files, and share it with others once it unlocks.
                         </p>
                     </div>
@@ -285,9 +285,9 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
             {isUnlocked() && (
                 <>
                     <div className="mb-8">
-                        <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
-                            <h3 className="text-xl font-bold mb-3 text-gray-800">Share this Capsule</h3>
-                            <p className="text-gray-700 text-base mb-5">
+                        <div className="border border-gray-200 rounded-lg p-6 bg-gray-800 hover:bg-gray-700 transition-colors duration-300 ease">
+                            <h3 className="text-xl font-bold mb-3">Share this Capsule</h3>
+                            <p className="text-gray-500 text-base mb-5">
                                 Share this time capsule with friends or family by sending them an email invitation.
                             </p>
 
@@ -295,14 +295,14 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
                                 <input
                                     type="email"
                                     placeholder="Enter email address"
-                                    className="flex-grow px-4 py-3 border border-gray-300 text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                    className="flex-grow px-4 py-3 border border-gray-700 bg-gray-900 text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
                                     value={shareEmail}
                                     onChange={(e) => setShareEmail(e.target.value)}
                                     required
                                 />
                                 <button
                                     type="submit"
-                                    className="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 disabled:opacity-50 font-medium"
+                                    className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 font-medium transition-colors duration-300 ease"
                                     disabled={isSharing}
                                 >
                                     {isSharing ? 'Sharing...' : 'Share Capsule'}
@@ -310,23 +310,23 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
                             </form>
 
                             {shareError && (
-                                <div className="mt-4 p-3 bg-red-50 border-l-4 border-red-500 text-red-700">
+                                <div className="mt-4 p-3 bg-red-900 border-l-4 border-red-500 text-gray-300">
                                     {shareError}
                                 </div>
                             )}
 
                             {shareSuccess && (
-                                <div className="mt-4 p-3 bg-green-50 border-l-4 border-green-500 text-green-700">
+                                <div className="mt-4 p-3 bg-green-900 border-l-4 border-green-500 text-gray-300">
                                     Capsule shared successfully! An email invitation has been sent.
                                 </div>
                             )}
 
                             {capsule.sharedWith && capsule.sharedWith.length > 0 && (
-                                <div className="mt-5 pt-4 border-t border-gray-200">
-                                    <p className="text-gray-700 font-medium mb-3">Previously shared with:</p>
+                                <div className="mt-5 pt-4 border-t border-gray-700">
+                                    <p className="text-gray-400 font-medium mb-3">Previously shared with:</p>
                                     <div className="flex flex-wrap gap-2">
                                         {capsule.sharedWith.map((email, index) => (
-                                            <div key={index} className="text-sm bg-white px-3 py-2 rounded-md border border-gray-200 text-gray-700">
+                                            <div key={index} className="text-sm bg-gray-900 px-3 py-2 rounded-md border border-gray-700 text-gray-400 hover:bg-gray-800 transition-colors duration-300 ease">
                                                 {email}
                                             </div>
                                         ))}
@@ -339,12 +339,12 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
                     {capsule.files && capsule.files.length > 0 && (
                         <div className="mb-8">
                             <div className="flex justify-between items-center mb-5">
-                                <h2 className="text-2xl font-bold text-gray-800">Capsule Contents</h2>
+                                <h2 className="text-2xl font-bold">Capsule Contents</h2>
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                 {capsule.files.map((file) => (
-                                    <div key={file.id} className="border rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+                                    <div key={file.id} className="border border-gray-700 rounded-lg overflow-hidden bg-gray-800 shadow-sm hover:shadow-md hover:bg-gray-700 transition-all duration-300 ease">
                                         {file.type === 'image' && (
                                             <a href={file.url} target="_blank" rel="noopener noreferrer" className="block">
                                                 <div className="relative h-48">
@@ -357,8 +357,8 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
                                             </a>
                                         )}
                                         {file.type === 'video' && (
-                                            <div className="relative h-48 bg-gray-100 flex items-center justify-center">
-                                                <a href={file.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark transition-colors">
+                                            <div className="relative h-48 bg-gray-900 flex items-center justify-center">
+                                                <a href={file.url} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 transition-colors duration-300 ease">
                                                     <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                                                     </svg>
@@ -366,8 +366,8 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
                                             </div>
                                         )}
                                         {file.type === 'document' && (
-                                            <div className="relative h-48 bg-gray-100 flex items-center justify-center">
-                                                <a href={file.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark transition-colors">
+                                            <div className="relative h-48 bg-gray-900 flex items-center justify-center">
+                                                <a href={file.url} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 transition-colors duration-300 ease">
                                                     <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" />
                                                     </svg>
@@ -375,13 +375,13 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
                                             </div>
                                         )}
                                         <div className="p-4">
-                                            <p className="text-base font-medium text-gray-800 mb-2 truncate" title={file.name}>{file.name}</p>
+                                            <p className="text-base font-medium text-gray-300 mb-2 truncate" title={file.name}>{file.name}</p>
                                             <a
                                                 href={file.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 download={file.name}
-                                                className="flex items-center gap-1 text-sm text-primary hover:text-primary-dark font-medium text-green-500"
+                                                className="flex items-center gap-1 text-sm text-green-500 hover:text-green-400 font-medium transition-colors duration-300 ease"
                                             >
                                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>

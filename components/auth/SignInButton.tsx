@@ -23,7 +23,13 @@ export const SignInButton = () => {
     <button
       onClick={handleSignIn}
       disabled={loading}
-      className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex items-center justify-center"
+      className="inline-flex items-center justify-center px-6 py-3 text-base sm:text-lg
+                     border border-white rounded-full
+                     transition-all duration-300 ease-out
+                     hover:-translate-y-2 hover:scale-105
+                     hover:bg-white hover:text-black
+                     focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black
+                     active:scale-95"
     >
       {loading ? (
         <div className="w-5 h-5 border-t-2 border-b-2 border-blue-500 rounded-full animate-spin mr-2"></div>

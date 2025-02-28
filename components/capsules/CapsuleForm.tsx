@@ -40,7 +40,7 @@ export const CapsuleForm: React.FC = () => {
     // Check authentication status with delay to ensure Firebase Auth is initialized
     useEffect(() => {
         const auth = getAuth();
-        
+
         // First check immediately
         if (auth.currentUser) {
             console.log("User is authenticated immediately:", auth.currentUser.uid);
@@ -57,13 +57,13 @@ export const CapsuleForm: React.FC = () => {
                         setAuthStatus('unauthenticated');
                     }
                 });
-                
+
                 return () => {
                     unsubscribe();
                     clearTimeout(checkAuth);
                 };
             }, 1000); // 1 second delay
-            
+
             return () => clearTimeout(checkAuth);
         }
     }, []);
@@ -107,12 +107,12 @@ export const CapsuleForm: React.FC = () => {
             console.log("Current user:", currentUser.uid);
 
             const formData = new FormData();
-            
+
             // Add user authentication information to form data
             formData.append("userId", currentUser.uid);
             formData.append("userEmail", currentUser.email || "");
             formData.append("userName", currentUser.displayName || "");
-            
+
             formData.append("name", data.name);
             formData.append("description", data.description);
 
@@ -161,7 +161,7 @@ export const CapsuleForm: React.FC = () => {
                 setAuthStatus(auth.currentUser ? 'authenticated' : 'unauthenticated');
             }, 1000);
         }
-        
+
         if (authStatus === 'checking') {
             return <div className="text-center p-4">Checking authentication status...</div>;
         }
@@ -171,7 +171,7 @@ export const CapsuleForm: React.FC = () => {
                 <div className="text-center p-4">
                     <p className="text-red-600 mb-4">You must be logged in to create a time capsule.</p>
                     <button
-                        onClick={() => router.push('/login')}
+                        onClick={() => router.push('/sign-in')}
                         className="px-4 py-2 bg-primary text-black rounded-md"
                     >
                         Go to Login
@@ -181,42 +181,42 @@ export const CapsuleForm: React.FC = () => {
         }
 
         return (
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-black p-6 rounded-md">
                 {fileError && (
-                    <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                    <div className="p-3 bg-red-500 text-white border border-white rounded">
                         {fileError}
                     </div>
                 )}
 
                 <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="name" className="block text-sm font-medium text-white">
                         Capsule Name
                     </label>
                     <input
                         id="name"
                         type="text"
                         {...register('name', { required: 'Name is required' })}
-                        className="mt-1 text-black block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                        className="mt-1 block w-full px-3 py-2 border border-white rounded-md shadow-sm bg-black text-white focus:outline-none focus:ring-white focus:border-white"
                     />
                     {errors.name && (
-                        <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+                        <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
                     )}
                 </div>
 
                 <div>
-                    <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="description" className="block text-sm font-medium text-white">
                         Description
                     </label>
                     <textarea
                         id="description"
                         rows={3}
                         {...register('description')}
-                        className="mt-1 text-black block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                        className="mt-1 block w-full px-3 py-2 border border-white rounded-md shadow-sm bg-black text-white focus:outline-none focus:ring-white focus:border-white"
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="unlockDate" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="unlockDate" className="block text-sm font-medium text-white">
                         Unlock Date
                     </label>
                     <input
@@ -224,23 +224,23 @@ export const CapsuleForm: React.FC = () => {
                         type="date"
                         min={new Date().toISOString().split('T')[0]}
                         {...register('unlockDate', { required: 'Unlock date is required' })}
-                        className="mt-1 text-black block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                        className="mt-1 block w-full px-3 py-2 border border-white rounded-md shadow-sm bg-black text-white focus:outline-none focus:ring-white focus:border-white"
                     />
                     {errors.unlockDate && (
-                        <p className="mt-1 text-sm text-red-600">{errors.unlockDate.message}</p>
+                        <p className="mt-1 text-sm text-red-400">{errors.unlockDate.message}</p>
                     )}
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-white mb-2">
                         Upload Files (Images, Videos, Documents)
                     </label>
                     <div
                         {...getRootProps()}
-                        className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center cursor-pointer hover:border-primary"
+                        className="border-2 border-dashed border-white rounded-md p-6 text-center cursor-pointer hover:border-gray-300 bg-black text-white"
                     >
                         <input {...getInputProps()} />
-                        <p className="text-gray-500">
+                        <p className="text-white">
                             Drag &amp; drop files here, or click to select files
                         </p>
                         <p className="text-xs text-gray-400 mt-1">
@@ -248,20 +248,20 @@ export const CapsuleForm: React.FC = () => {
                         </p>
                     </div>
                     {fileError && (
-                        <p className="mt-1 text-sm text-red-600">{fileError}</p>
+                        <p className="mt-1 text-sm text-red-400">{fileError}</p>
                     )}
 
                     {files.length > 0 && (
                         <div className="mt-4">
-                            <h4 className="text-sm font-medium text-gray-700 mb-2">Selected Files:</h4>
+                            <h4 className="text-sm font-medium text-white mb-2">Selected Files:</h4>
                             <ul className="space-y-2">
                                 {files.map((file, index) => (
-                                    <li key={index} className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                                        <span className="text-sm text-black truncate">{file.name}</span>
+                                    <li key={index} className="flex justify-between items-center p-2 bg-gray-900 rounded">
+                                        <span className="text-sm text-white truncate">{file.name}</span>
                                         <button
                                             type="button"
                                             onClick={() => removeFile(index)}
-                                            className="text-red-500 hover:text-red-700"
+                                            className="text-red-400 hover:text-red-600"
                                         >
                                             Remove
                                         </button>
@@ -273,13 +273,13 @@ export const CapsuleForm: React.FC = () => {
                 </div>
 
                 <div className="pt-2">
-                    <p className="text-xs text-gray-600 mb-2">
+                    <p className="text-xs text-gray-400 mb-2">
                         Logged in as: {auth.currentUser?.email || "Unknown"}
                     </p>
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full flex justify-center py-2 px-4 border border-black rounded-md shadow-sm text-sm font-medium text-black bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                        className="w-full flex justify-center py-2 px-4 border border-white rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
                     >
                         {loading ? (
                             <>
@@ -292,6 +292,7 @@ export const CapsuleForm: React.FC = () => {
                     </button>
                 </div>
             </form>
+
         );
     };
 

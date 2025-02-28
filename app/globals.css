@@ -23,3 +23,7 @@ body {
   background: var(--background);
   font-family: 'Host Grotesk', Helvetica, sans-serif;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
