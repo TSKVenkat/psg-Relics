@@ -22,7 +22,7 @@ export const formatDateTime = (date: any): string => {
 // Check if capsule unlock date has been reached
 export const isCapsuleUnlocked = (unlockDate: Date): boolean => {
     const now = new Date();
-    return now >= unlockDate;
+    return unlockDate <= now;
 };
 
 // Generate a share URL for a capsule

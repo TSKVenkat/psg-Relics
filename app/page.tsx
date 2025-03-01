@@ -2,10 +2,9 @@ import { SignInButton } from '../components/auth/SignInButton';
 import { redirect } from 'next/navigation';
 import { auth } from '../lib/firebase';
 import ScrollVelocity from '../components/assests/ScrollVelocity';
-import CircularGallery from '../components/CircularGallery/CircularGallery';
 
 export default async function LandingPage() {
-  // Check if user is already authenticated using Firebase directly
+  
   if (auth.currentUser) {
     redirect('/home');
   }
@@ -43,9 +42,7 @@ export default async function LandingPage() {
         <div className="flex justify-center">
           <SignInButton />
         </div>
-      </div>
-      
-      
+      </div>   
     </div>
   );
 }

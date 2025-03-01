@@ -206,7 +206,7 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
     }
 
     return (
-        <div className="bg-black rounded-lg shadow-lg p-16 border mb-128">
+        <div className="bg-black rounded-lg shadow-lg p-16 border mb-4">
             <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-8">
                 <div>
                     <h1 className="text-3xl font-bold mb-2">{capsule.name}</h1>

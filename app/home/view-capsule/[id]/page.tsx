@@ -5,16 +5,13 @@ import { db } from '../../../../lib/firebase';
 import { Capsule } from '../../../../types';
 import { CapsuleView } from '../../../../components/capsules/CapsuleView';
 
-interface ViewCapsulePageProps {
-    params: {
-        id: string;
-    };
-}
-
-export default function ViewCapsulePage({ params }: ViewCapsulePageProps) {
-    const { id } = params;
-    const [capsule, setCapsule] = useState<Capsule | null>(null);
+export default function ViewCapsulePage({ params }: { params: Promise<{ id: string }> }) {
+    // Unwrap params using React.use()
+    const resolvedParams = React.use(params);
+    const id = resolvedParams.id;
     
+    const [capsule, setCapsule] = useState<Capsule | null>(null);
+
     useEffect(() => {
         if (!id) return;
 
