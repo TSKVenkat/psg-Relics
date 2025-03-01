@@ -20,7 +20,7 @@ export default function RootLayout({
         <AuthProvider>
           <nav><Link className='flex text-white font-bold justify-between items-center p-4 cursor-pointer' href='/'><p className='self-center text-3xl'>Relics</p><SignOutButton /></Link></nav>
           {children}
-          <footer className="w-full bg-black text-gray-400 py-6 mt-16">
+          <footer className="w-full bg-black text-gray-400 py-6 mt-16 overflow-x-hidden">
             <div className="max-w-4xl mx-auto flex flex-col items-center space-y-8 text-center">
               <ScrollVelocity
                 texts={['RELICS', 'RELICS']}
