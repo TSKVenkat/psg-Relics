@@ -321,13 +321,19 @@ export const CapsuleView = ({ capsuleId }: CapsuleViewProps) => {
                                 </div>
                             )}
 
+                            {/* Replace the shared emails display section in CapsuleView.tsx with this code */}
                             {capsule.sharedWith && capsule.sharedWith.length > 0 && (
                                 <div className="mt-5 pt-4 border-t border-gray-700">
                                     <p className="text-gray-400 font-medium mb-3">Previously shared with:</p>
                                     <div className="flex flex-wrap gap-2">
                                         {capsule.sharedWith.map((email, index) => (
-                                            <div key={index} className="text-sm bg-gray-900 px-3 py-2 rounded-md border border-gray-700 text-gray-400 hover:bg-gray-800 transition-colors duration-300 ease">
-                                                {email}
+                                            <div
+                                                key={index}
+                                                className="text-sm bg-gray-900 px-3 py-2 rounded-md border border-gray-700 text-gray-400 hover:bg-gray-800 transition-colors duration-300 ease max-w-full overflow-hidden"
+                                            >
+                                                <div className="truncate w-full" title={email}>
+                                                    {email}
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
